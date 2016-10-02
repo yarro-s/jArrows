@@ -156,7 +156,7 @@ sqr.combine(sqr).
 `someArrow` и `f` должны совпадать.
 
 ```Java
-Arrow<Integer, Pair<Integer, Double>> sqrAndSqrt = Action.of(i -> i*i)
+Arrow<Integer, Pair<Integer, Double>> sqrAndSqrt = Action.of((Integer i) -> i*i)
 							.cloneInput(Math::sqrt); 
 sqrAndSqrt.apply(5);  // Pair(25, 2.236)
 ```
