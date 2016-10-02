@@ -100,7 +100,7 @@ mult5Plus10toStr.apply(10);      //  "60.5"
 
 Получившееся вычисление, представленное составной стрелкой `mult5Plus10toStr`, можно представить в виде структурной схемы:
 
-![Составная стрелка mult5Plus10toStr](https://github.com/yarric/jArrows/blob/master/docs/papers/images/mult5Plus10toStr.png)
+![Составная стрелка Mult5Plus10toStr](https://github.com/yarric/jArrows/blob/master/docs/images/Mult5Plus10toStr.png)
 
 Вход получившейся составной стрелки имеет тип `Integer`, то есть входной тип первого вычисления в цепочке, 
 а выход имеет тип `String` - выходной тип последнего вычисления в цепочке.
@@ -145,7 +145,7 @@ Arrow<Pair<Double, Double>, Double> sum_SinCos = sin_cos.join(sqr.combine(sqr))
 sum_SinCos.apply(Pair.of(0.7, 0.2));    // 1.38
 
 ```
-![Составная стрелка sum_SinCos](https://github.com/yarric/jArrows/blob/master/docs/papers/images/sum_SinCos.png)
+![Составная стрелка SumSinCosSqr](https://github.com/yarric/jArrows/blob/master/docs/images/SumSinCosSqr.png)
 
 Получившаяся "широкая" стрелка `sin_cos` принимает на вход пару значений типа `Pair<Double, Double>`, первое значение 
 `pair.left` пары попадает на вход первой стрелки, второе `pair.right` - на вход второй, их результаты тоже объединяются в пару. Следующая составная стрелка `sqr` принимает на вход значение типа `Pair<Double, Double>`и возводит оба значения пары в квадрат. Последняя стрелка суммирует пару выходных значений стрелки 
@@ -160,7 +160,7 @@ Arrow<Integer, Pair<Integer, Double>> sqrAndSqrt = Action.of((Integer i) -> i*i)
 							.cloneInput(Math::sqrt); 
 sqrAndSqrt.apply(5);  // Pair(25, 2.236)
 ```
-![Составная стрелка sqrAndSqrt](https://github.com/yarric/jArrows/blob/master/docs/papers/images/sqrAndSqrt.png)
+![Составная стрелка SqrAndSqrt](https://github.com/yarric/jArrows/blob/master/docs/images/SqrAndSqrt.png)
 
 Параллельное соединение в данном случае означает, что результат двух вычислений, соединённых параллельно, 
 не зависят друг от друга, в отличии от последовательного соединения методом `join`, когда результат одного вычисления передаётся на вход другого. Многопоточные параллельные соединения реализуется классом 
@@ -181,7 +181,8 @@ arr.<Integer>first().apply(Pair.of(10, 10)));     // Pair(31.623, 10)
 arr.<Integer>second().apply(Pair.of(10, 10)));    // Pair(10, 31.623)
 ```
 
-Эти методы аналогичны методам `someArrow.bypass2nd()` и `someArrow.bypass1st()` соответственно. 
+![Стрелка First](https://github.com/yarric/jArrows/blob/master/docs/images/First.png)
+![Стрелка Second](https://github.com/yarric/jArrows/blob/master/docs/images/Second.png)
 
-## Немного теории
+Эти методы аналогичны методам `someArrow.bypass2nd()` и `someArrow.bypass1st()` соответственно. 
 
