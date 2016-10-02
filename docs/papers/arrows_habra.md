@@ -175,8 +175,10 @@ sqrAndSqrt.apply(5);  // Pair(25, 2.236)
 ```Java
 Arrow<Integer, Double> arr = Action.of(i -> Math.sqrt(i*i*i));
 
-arr.first().apply(10);     // Pair(31.623, 10)
-arr.second().apply(10);    // Pair(10, 31.623)
+Pair input = Pair.of(10, 10);
+
+arr.<Integer>first().apply(Pair.of(10, 10)));     // Pair(31.623, 10)
+arr.<Integer>second().apply(Pair.of(10, 10)));    // Pair(10, 31.623)
 ```
 
 Эти методы аналогичны методам `someArrow.bypass2nd()` и `someArrow.bypass1st()` соответственно. 
