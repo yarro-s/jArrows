@@ -135,9 +135,9 @@ class Action<In, Out> implements Arrow<In, Out>, Applicable<In, Out> {
 
 ```
 Arrow<Pair<Double, Double>, Pair<Double, Double>> 
-	sin_cos = Arrow.of(Math::sin).combine(Math::cos);
+	sin_cos = Action.of(Math::sin).combine(Math::cos);
 
-Arrow<Double, Double> sqr = Arrow.of(i -> i*i);
+Arrow<Double, Double> sqr = Action.of(i -> i*i);
 
 Arrow<Pair<Double, Double>, Double> sum_SinCos = sin_cos.join(sqr.combine(sqr))
 							.join(p -> p.left + p.right);
@@ -156,7 +156,7 @@ sqr.combine(sqr).
 `someArrow` и `f` должны совпадать.
 
 ```Java
-Arrow<Integer, Pair<Integer, Double>> sqrAndSqrt = Arrow.of(i -> i*i)
+Arrow<Integer, Pair<Integer, Double>> sqrAndSqrt = Action.of(i -> i*i)
 							.cloneInput(Math::sqrt); 
 sqrAndSqrt.apply(5);  // Pair(25, 2.236)
 ```
@@ -173,7 +173,7 @@ sqrAndSqrt.apply(5);  // Pair(25, 2.236)
 с результатом вычисления этой стрелки. Это реализуется методом `someArrow.first()` и дополняющим его `someArrow.second()`, преобразующим стрелку `someArrow` так, что получившаяся стрелка передаёт на выход пару, содержащую результат вычисления `someArrow` и само входное значение `someArrow`.
 
 ```Java
-Arrow<Integer, Double> arr = Arrow.of(i -> Math.sqrt(i*i*i));
+Arrow<Integer, Double> arr = Action.of(i -> Math.sqrt(i*i*i));
 
 arr.first().apply(10);     // Pair(31.623, 10)
 arr.second().apply(10);    // Pair(10, 31.623)
