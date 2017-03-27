@@ -2,7 +2,7 @@
 #### A Ligthweight Arrows Implementation In Java
 This library implements a general interface to computation called [Arrow](https://www.haskell.org/arrows/) first [defined](https://www.haskell.org/arrows/biblio.html#Hug00) by John Hughes. Get the [latest](https://github.com/yarric/jArrows/tree/master/release/latest) JAR and use it with 
 
-```Java import jArrows.*;```
+```import jArrows.*;```
 
 #### Quick Tutorial
 An `Arrow<In, Out>` of a function `f` represents a computation `->[f(x)]->` defined by the function `Out f(In x)`. Arrows allow us to compose computations (actions) in various ways.
